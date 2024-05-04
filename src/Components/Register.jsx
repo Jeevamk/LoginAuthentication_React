@@ -25,9 +25,9 @@ const Register = () => {
   const [errMsg,setErrMsg] = useState('')
   const [success,setSuccess] = useState(false)
 
-  useEffect(()=>{
-    userRef.current.focus()
-  },[])
+  // useEffect(()=>{
+  //   userRef.current.focus()
+  // },[])
 
   useEffect(()=>{
     const result = USER_REGX.test(user)
@@ -46,11 +46,20 @@ const Register = () => {
   },[pwd,matchPwd])
   
 
-  
+  useEffect(()=>{
+    setErrMsg('')
+  },[user,pwd,matchPwd])
+
+
   return (
-    <div>
+    <section>
+      <p ref={errRef} className={errMsg ? "errmsg": "offscreen"} aria-live='assertive'>{errMsg}</p>
       <h1>Register</h1>
-    </div>
+      <form>
+        <label htmlFor='username'>username : </label>
+        <input type="text" id='username' ref={userRef} autoComplete='off' />
+      </form>
+    </section>
   )
 }
 

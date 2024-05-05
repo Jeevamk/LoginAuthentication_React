@@ -57,7 +57,7 @@ const Register = () => {
       <h1>Register</h1>
       <form>
         <label htmlFor='username'>username : </label>
-        <input type="text" id='username' ref={userRef} autoComplete='off' />
+        <input type="text" id='username' ref={userRef} autoComplete='off' required onChange={(e)=> setUser(e.target.value)} aria-invalid={validName ? "false":"ture"} aria-describedby='uidnote' onFocus={()=> setUserFocus(true)} onBlur={()=> setUserFocus(false)}/>
       </form>
     </section>
   )
